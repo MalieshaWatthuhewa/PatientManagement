@@ -23,16 +23,16 @@
 
 <h1>Patient Management</h1>
 <form id="formItem" name="formItem" method="post" action="patient.jsp">
-Name:
+Patient Name:
 <input id="pName" name="pName" type="text"
 class="form-control form-control-sm">
-<br>Address:
+<br>Patient Address:
 <input id="pAddress" name="pAddress" type="text"
 class="form-control form-control-sm">
-<br> Age:
+<br>Patient Age:
 <input id="pAge" name="pAge" type="text"
 class="form-control form-control-sm">
-<br> NIC:
+<br>Patient NIC:
 <input id="pNIC" name="pNIC" type="text"
 class="form-control form-control-sm">
 <br>
