@@ -23,7 +23,7 @@
 
 <h1>Patient Management</h1>
 <form id="formItem" name="formItem" method="post" action="patient.jsp">
-Patient Name:
+Patient Name(Full):
 <input id="pName" name="pName" type="text"
 class="form-control form-control-sm">
 <br>Patient Address:
@@ -35,7 +35,11 @@ class="form-control form-control-sm">
 <br>Patient NIC:
 <input id="pNIC" name="pNIC" type="text"
 class="form-control form-control-sm">
+<br>Patient Weakness:
+<input id="pWeakness" name="pWeakness" type="text"
+class="form-control form-control-sm">
 <br>
+
 <input id="btnSave" name="btnSave" type="button" value="Save"
 class="btn btn-primary">
 <input type="hidden" id="hidItemIDSave" name="hidItemIDSave" value="">

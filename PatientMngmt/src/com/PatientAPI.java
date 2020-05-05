@@ -48,7 +48,8 @@ public class PatientAPI extends HttpServlet {
 		String output = patObj.insertItem(request.getParameter("pName"),
 				request.getParameter("pAddress"),
 				request.getParameter("pAge"),
-				request.getParameter("pNIC"));
+				request.getParameter("pNIC"),
+				request.getParameter("pWeakness"));
 		
 				response.getWriter().write(output);
 		
@@ -68,7 +69,8 @@ public class PatientAPI extends HttpServlet {
 		paras.get("pName").toString(),
 		paras.get("pAddress").toString(),
 		paras.get("pAge").toString(),
-		paras.get("pNIC").toString());
+		paras.get("pNIC").toString(),
+		paras.get("pWeakness").toString());
 		response.getWriter().write(output);
 		
 		

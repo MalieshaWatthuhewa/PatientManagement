@@ -137,40 +137,51 @@ $("#pName").val($(this).closest("tr").find('td:eq(0)').text());
 $("#pAddress").val($(this).closest("tr").find('td:eq(1)').text());
 $("#pAge").val($(this).closest("tr").find('td:eq(2)').text());
 $("#pNIC").val($(this).closest("tr").find('td:eq(3)').text());
+$("#pWeakness").val($(this).closest("tr").find('td:eq(4)').text());
 });
 // CLIENTMODEL=========================================================================
 function validateItemForm()
 {
-// CODE
+// Name
 if ($("#pName").val().trim() == "")
 {
-return "Insert Item Code.";
+return "Insert Item name.";
 }
-// NAME
+// address
 if ($("#pAddress").val().trim() == "")
 {
-return "Insert Item Name.";
+return "Insert Item address.";
 }
 
 
-//PRICE-------------------------------
+//age------------------------------
 if ($("#pAge").val().trim() == "")
 {
-return "Insert Item Price.";
+return "Insert age.";
 }
 // is numerical value
 var tmpAge = $("#pAge").val().trim();
 if (!$.isNumeric(tmpAge))
 {
-return "Insert a numerical value for Item Price.";
+return "Insert a numerical value for age.";
 }
-// convert to decimal price
-$("#pAge").val(parseFloat(tmpAge).toFixed(2));
-// DESCRIPTION------------------------
+
+$("#pAge").val(parseInt(tmpAge).toFixed());
+
+
+// NIC--------------------
 if ($("#pNIC").val().trim() == "")
 {
-return "Insert Item Description.";
+return "Insert NIC.";
 }
+
+
+//weakness--------------------
+if ($("#pWeakness").val().trim() == "")
+{
+return "Insert weakness.";
+}
+
 return true;
 }
 

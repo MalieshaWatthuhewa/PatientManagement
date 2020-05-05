@@ -24,7 +24,7 @@ public class Patient {
 
 	// inserting an items .........................
 
-	public String insertItem(String pName, String pAddress, String pAge, String pNIC) {
+	public String insertItem(String pName, String pAddress, String pAge, String pNIC,String pWeakness) {
 		String output = "";
 		try {
 			Connection con = connect();
@@ -32,15 +32,17 @@ public class Patient {
 				return "Error while connecting to the database";
 			}
 			// create a prepared statement
-			String query = "insert into patient" + "(`pID`,`pName`,`pAddress`,`pAge`,`pNIC`)"
-					+ " values (?, ?, ?, ?, ?)";
+			String query = "insert into patient" + "(`pID`,`pName`,`pAddress`,`pAge`,`pNIC`,`pWeakness`)"
+					+ " values (?, ?, ?, ?, ?,?)";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			// binding values
 			preparedStmt.setInt(1, 0);
 			preparedStmt.setString(2, pName);
 			preparedStmt.setString(3, pAddress);
-			preparedStmt.setDouble(4, Double.parseDouble(pAge));
+			preparedStmt.setInt(4, Integer.parseInt(pAge));
 			preparedStmt.setString(5, pNIC);
+			preparedStmt.setString(6, pWeakness);
+
 
 			// execute the statement
 			preparedStmt.execute();
@@ -78,6 +80,7 @@ public class Patient {
 	output = "<table border='1'><tr><th>Name</th>"
 			+ "<th>Address</th><th>Age</th>"
 			+"<th>NIC</th>"
+			+"<th>Weakness</th>"
 			+ "<th>Update</th><th>Remove</th></tr>";
 	String query = "select * from patient";
 	Statement stmt = con.createStatement();
@@ -88,8 +91,9 @@ public class Patient {
 	String pID = Integer.toString(rs.getInt("pID"));
 	String pName = rs.getString("pName");
 	String pAddress = rs.getString("pAddress");
-	String pAge = Double.toString(rs.getDouble("pAge"));
+	String pAge = Integer.toString(rs.getInt("pAge"));
 	String pNIC = rs.getString("pNIC");
+	String pWeakness = rs.getString("pWeakness");
 	
 	
 	// Add into the html table
@@ -99,6 +103,7 @@ public class Patient {
 	output += "<td>" + pAddress + "</td>";
 	output += "<td>" + pAge + "</td>";
 	output += "<td>" + pNIC + "</td>";
+	output += "<td>" + pWeakness + "</td>";
 	// buttons
 	output += "<td><input name='btnUpdate' type='button'"
 			+ "value='Update'"
@@ -127,7 +132,7 @@ public class Patient {
 	
 	// update items ---------------------------------------------
 
-	public String updateItem(String pID, String pName, String pAddress, String pAge, String pNIC) {
+	public String updateItem(String pID, String pName, String pAddress, String pAge, String pNIC,String pWeakness) {
 		String output = "";
 		try {
 			Connection con = connect();
@@ -135,14 +140,15 @@ public class Patient {
 				return "Error while connecting to the database for updating.";
 			}
 			// create a prepared statement
-			String query = "UPDATE patient SET pName=?,pAddress=?,pAge=?,pNIC=? WHERE pID=?";
+			String query = "UPDATE patient SET pName=?,pAddress=?,pAge=?,pNIC=?,pWeakness=?WHERE pID=?";
 			PreparedStatement preparedStmt = con.prepareStatement(query);
 			// binding values
 			preparedStmt.setString(1, pName);
 			preparedStmt.setString(2, pAddress);
-			preparedStmt.setDouble(3, Double.parseDouble(pAge));
+			preparedStmt.setInt(3, Integer.parseInt(pAge));
 			preparedStmt.setString(4, pNIC);
- 			preparedStmt.setInt(5, Integer.parseInt(pID));
+			preparedStmt.setString(5, pWeakness);
+ 			preparedStmt.setInt(6, Integer.parseInt(pID));
 			// execute the statement
 			preparedStmt.execute();
 			con.close();
